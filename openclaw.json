@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.2.15",
-    "lastTouchedAt": "2026-02-17T18:01:56.574Z"
+    "lastTouchedAt": "2026-02-17T19:29:23.961Z"
   },
   "env": {},
   "wizard": {
@@ -93,8 +93,7 @@
           "google-gemini-cli/gemini-3-flash-preview",
           "google-antigravity/claude-opus-4-6",
           "google-antigravity/claude-opus-4-6-thinking",
-          "groq/llama-3.1-8b-instant",
-          "anthropic/claude-haiku-4-5-20251001"
+          "groq/llama-3.3-70b-versatile"
         ]
       },
       "models": {
