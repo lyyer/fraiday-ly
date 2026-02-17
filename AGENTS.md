@@ -104,6 +104,7 @@ You wake up fresh each session. Memory files are your only continuity.
 - Ask when uncertain about an action
 - Double-check before executing commands that modify/delete files
 - Use `trash` instead of `rm` for file deletion
+- **Ask before restarting the Gateway or performing any action that will temporarily take me offline.**
 
 **When in doubt, ask.**
 
