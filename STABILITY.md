@@ -12,8 +12,9 @@ Never implement system-level changes that could isolate the agent (sandboxing, n
 Before executing commands that modify the Gateway config, networking, or filesystem permissions:
 1. **Assessment:** Could this break the agent's ability to communicate or read its own files?
 2. **Snapshot:** If possible, backup the file being modified (`cp config.json config.json.bak`).
-3. **The "Undo" Command:** Inform the user exactly what to run if I go offline.
-4. **Validation:** After the change, immediately run `openclaw status` and verify tool access.
+3. **Commit State:** Use `git commit -am "pre-infra: [change description]"` so we can revert if things go south.
+4. **The "Undo" Command:** Inform the user exactly what to run if I go offline.
+5. **Validation:** After the change, immediately run `openclaw status` and verify tool access.
 
 ## 3. Sandboxing & Isolation
 - **Status:** CURRENTLY FROZEN. No new isolation layers are to be added until a stable, verified communication bridge is established.
