@@ -16,7 +16,7 @@ This file tracks the overarching goals, current focus, and completed milestones 
 - [x] **Non-Main Sandboxing:** OpenClaw configured for Docker sandboxing of non-main sessions.
 - [x] **Sandbox Verification:** Confirmed sandbox isolation via sub-agent test.
 - [x] **Recovery Drills:** Test manual config rollback from GitHub. (This will be a future test of the recovery drill)
-- [ ] **Security Hardening:** Resolve CRITICAL audit warning regarding small model web access.
+- [x] **Security Hardening:** Resolve CRITICAL audit warning regarding small model web access.
 
 ### 2. Continuity & Memory (The Brain)
 - [x] **Daily Logs:** Consistent usage of `memory/YYYY-MM-DD.md`.
