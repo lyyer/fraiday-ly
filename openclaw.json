@@ -1,0 +1,359 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.2.15",
+    "lastTouchedAt": "2026-02-17T18:01:56.574Z"
+  },
+  "env": {},
+  "wizard": {
+    "lastRunAt": "2026-02-17T16:57:20.937Z",
+    "lastRunVersion": "2026.2.15",
+    "lastRunCommand": "doctor",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "google-gemini-cli:fraiday.ly@gmail.com": {
+        "provider": "google-gemini-cli",
+        "mode": "oauth"
+      },
+      "google-antigravity:fraiday.ly@gmail.com": {
+        "provider": "google-antigravity",
+        "mode": "oauth"
+      }
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "groq": {
+        "baseUrl": "https://api.groq.com/openai/v1",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "openai/gpt-oss-20b",
+            "name": "Groq GPT OSS 20B",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          },
+          {
+            "id": "llama-3.1-8b-instant",
+            "name": "Groq Llama 3.1 8B",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          },
+          {
+            "id": "llama-3.3-70b-versatile",
+            "name": "Groq Llama 3.3 70B",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "google-antigravity/gemini-3-flash",
+        "fallbacks": [
+          "google-antigravity/gemini-3-pro-high",
+          "google-antigravity/claude-sonnet-4-5",
+          "google-gemini-cli/gemini-2.5-flash",
+          "google-gemini-cli/gemini-3-pro-preview",
+          "google-gemini-cli/gemini-3-flash-preview",
+          "google-antigravity/claude-opus-4-6",
+          "google-antigravity/claude-opus-4-6-thinking",
+          "groq/llama-3.1-8b-instant",
+          "anthropic/claude-haiku-4-5-20251001"
+        ]
+      },
+      "models": {
+        "anthropic/claude-sonnet-4-5-20250929": {
+          "alias": "Sonnet",
+          "params": {
+            "cacheRetention": "short"
+          }
+        },
+        "anthropic/claude-haiku-4-5-20251001": {
+          "alias": "Haiku",
+          "params": {
+            "cacheRetention": "short"
+          }
+        },
+        "groq/openai/gpt-oss-20b": {
+          "alias": "GPT OSS 20B"
+        },
+        "groq/llama-3.1-8b-instant": {
+          "alias": "Llama3 8B"
+        },
+        "groq/llama-3.3-70b-versatile": {
+          "alias": "Llama3 70B"
+        },
+        "google-gemini-cli/gemini-3-pro-preview": {},
+        "google-antigravity/claude-opus-4-6-thinking": {},
+        "google-antigravity/gemini-3-flash": {},
+        "google-gemini-cli/gemini-3-flash-preview": {},
+        "google-antigravity/gemini-3-pro-high": {},
+        "google-gemini-cli/gemini-2.5-flash": {},
+        "google-antigravity/claude-opus-4-6": {},
+        "google-antigravity/claude-sonnet-4-5": {}
+      },
+      "workspace": "/home/yer-ly/.openclaw/workspace",
+      "contextPruning": {
+        "mode": "cache-ttl",
+        "ttl": "30m"
+      },
+      "compaction": {
+        "mode": "safeguard",
+        "reserveTokensFloor": 30000,
+        "memoryFlush": {
+          "enabled": true
+        }
+      },
+      "heartbeat": {
+        "every": "30m"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      },
+      "sandbox": {
+        "mode": "non-main",
+        "workspaceAccess": "rw"
+      }
+    }
+  },
+  "tools": {},
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto"
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "botToken": "8578276456:AAGR91Nxcb47p7fp3pKJ6tXij4vj3YEycF0",
+      "groupPolicy": "allowlist",
+      "streamMode": "partial"
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "f7d8fa24932bb6bf75a17a9ad0418a7d52398e2b6c12274d"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "calendar.add",
+        "contacts.add",
+        "reminders.add"
+      ]
+    }
+  },
+  "skills": {
+    "allowBundled": [
+      "1password",
+      "clawhub",
+      "gemini",
+      "gog",
+      "healthcheck",
+      "model-usage",
+      "nano-banana-pro",
+      "self-improving-agent",
+      "session-logs",
+      "smart-routing",
+      "summarize",
+      "weather"
+    ],
+    "entries": {
+      "1password": {
+        "enabled": true
+      },
+      "gemini": {
+        "enabled": true
+      },
+      "openai-image-gen": {
+        "enabled": false
+      },
+      "openai-whisper": {
+        "enabled": false
+      },
+      "openai-whisper-api": {
+        "enabled": false
+      },
+      "openhue": {
+        "enabled": false
+      },
+      "oracle": {
+        "enabled": false
+      },
+      "peekaboo": {
+        "enabled": false
+      },
+      "sag": {
+        "enabled": false
+      },
+      "apple-notes": {
+        "enabled": false
+      },
+      "apple-reminders": {
+        "enabled": false
+      },
+      "bear-notes": {
+        "enabled": false
+      },
+      "blogwatcher": {
+        "enabled": false
+      },
+      "blucli": {
+        "enabled": false
+      },
+      "camsnap": {
+        "enabled": false
+      },
+      "coding-agent": {
+        "enabled": false
+      },
+      "discord": {
+        "enabled": false
+      },
+      "eightctl": {
+        "enabled": false
+      },
+      "gifgrep": {
+        "enabled": false
+      },
+      "github": {
+        "enabled": false
+      },
+      "goplaces": {
+        "enabled": false
+      },
+      "himalaya": {
+        "enabled": false
+      },
+      "imsg": {
+        "enabled": false
+      },
+      "mcporter": {
+        "enabled": false
+      },
+      "model-usage": {
+        "enabled": false
+      },
+      "nano-banana-pro": {
+        "enabled": false
+      },
+      "nano-pdf": {
+        "enabled": false
+      },
+      "notion": {
+        "enabled": false
+      },
+      "obsidian": {
+        "enabled": false
+      },
+      "ordercli": {
+        "enabled": false
+      },
+      "self-improving-agent": {
+        "enabled": true
+      },
+      "sherpa-onnx-tts": {
+        "enabled": false
+      },
+      "skill-creator": {
+        "enabled": false
+      },
+      "slack": {
+        "enabled": false
+      },
+      "smart-routing": {
+        "enabled": true
+      },
+      "songsee": {
+        "enabled": false
+      },
+      "sonoscli": {
+        "enabled": false
+      },
+      "spotify-player": {
+        "enabled": false
+      },
+      "things-mac": {
+        "enabled": false
+      },
+      "tmux": {
+        "enabled": false
+      },
+      "trello": {
+        "enabled": false
+      },
+      "video-frames": {
+        "enabled": false
+      },
+      "voice-call": {
+        "enabled": false
+      },
+      "wacli": {
+        "enabled": false
+      }
+    }
+  },
+  "plugins": {
+    "entries": {
+      "telegram": {
+        "enabled": true
+      },
+      "google-gemini-cli-auth": {
+        "enabled": true
+      },
+      "google-antigravity-auth": {
+        "enabled": true
+      }
+    }
+  }
+}
