@@ -40,7 +40,7 @@ This file tracks the overarching goals, current focus, and completed milestones 
 ### 4. Workflow 2.0 (The Engine)
 - [x] **Parallel Fleet Test:** Successfully ran 3-agent parallel test.
 - [x] **Smart Routing:** Initial setup of `smart-routing` skill.
-- [ ] **Quota Awareness:** Implement automated usage tracking for model selection.
+- [x] **Quota Awareness:** Implement automated usage tracking for model selection.
 - [ ] **Cost Efficiency:** Fine-tune model selection for specific task complexities.
 
 ---
