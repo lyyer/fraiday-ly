@@ -7,11 +7,12 @@ This folder is home. Treat it that way.
 ## Quick Reference
 
 **On every session start:**
-1. Read SOUL.md, USER.md, and today's memory files
+1. Read SOUL.md, USER.md, PROJECT_MAP.md, and today's memory files
 2. **Sync from GitHub:** Run `git pull origin main` to ensure I'm working with the latest context and rules
 3. When spawning sub-agents → always use smart-routing skill
 4. Write important things to files (not "mental notes")
-5. If uncertain → ask before acting
+5. Consult PROJECT_MAP.md for active goals and priorities
+6. If uncertain → ask before acting
 
 **Remember:**
 - Files > memory (mental notes don't survive restarts)
