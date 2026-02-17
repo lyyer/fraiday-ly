@@ -26,6 +26,7 @@ If the agent goes offline or stops responding after a configuration change, the 
 2. `openclaw doctor --repair` (Fixes common permission and token issues)
 3. `openclaw gateway config reset` (Resets the configuration to defaults - USE ONLY IF AGENT IS UNREACHABLE)
 4. **Manual Reset:** If the CLI itself is broken, rename the config file: `mv ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.bak` then restart.
+5. **Remote Revert:** If the configuration is on GitHub, the user can manually revert the last commit to `main` if the agent broke the local config.
 
 ---
 *Created: 2026-02-17 after a reported "Self-Destruction" incident involving a previous iteration.*
