@@ -1,0 +1,14 @@
+# OpenClaw Workspace Gitignore
+
+# Core configuration and secrets
+.openclaw/
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+
+# Personal/Sensitive Data (Optional - Keep commented if you WANT to back these up to a PRIVATE repo)
+# USER.md
+# MEMORY.md
+# memory/
