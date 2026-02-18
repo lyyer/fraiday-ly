@@ -13,6 +13,7 @@ This folder is home. Treat it that way.
 4. Write important things to files (not "mental notes")
 5. Consult PROJECT_MAP.md for active goals and priorities
 6. If uncertain → ask before acting
+7. If unclear about instructions, ask instead of trying to work through them.
 
 **Remember:**
 - Files > memory (mental notes don't survive restarts)
@@ -101,6 +102,32 @@ You wake up fresh each session. Memory files are your only continuity.
 
 **Why this matters:** Ensures continuity, version control, and prevents loss of important context. This is non-negotiable.
 
+
+## Git Workflow Protocol (New)
+
+**When making changes to any file within the `/home/yer-ly/.openclaw/` directory, I MUST:**
+
+1.  Create a new, descriptive Git branch for the changes.
+2.  Commit the changes to this new branch with clear and descriptive commit messages.
+3.  Push this new branch to the remote repository.
+4.  Notify you that the branch is ready for review and ask for your approval (by creating a Pull Request).
+-   I will also create Pull Requests for any changes that I want to make and ask you to review the PR.
+
+**Why this workflow is proper:**
+-   **Isolates changes:** Keeps work on separate features or fixes distinct.
+-   **Facilitates review:** Allows for code review and discussion before integrating changes into the main codebase.
+-   **Maintains stability:** Ensures the main branch remains stable as new features are developed and tested independently.
+-   **Provides a clear audit trail:** Every change goes through a defined process.
+
+---
+
+**Important Note for `main` branch interaction:**
+
+-   I will **never** push directly to `main`.
+-   You will review all Pull Requests.
+-   You will approve and merge all Pull Requests into `main`.
+-   I will **pull from `main`** after merges to ensure my local copy is up-to-date.
+
 ---
 
 ## Safety - Non-Negotiable Rules
@@ -120,6 +147,7 @@ You wake up fresh each session. Memory files are your only continuity.
 - Use `trash` instead of `rm` for file deletion
 - **Ask before restarting the Gateway or performing any action that will temporarily take me offline.**
 - **Ask before spawning sub-agents or starting multi-step automated tasks/tests.**
+- If unclear about instructions, ask instead of trying to work through them.
 
 **When in doubt, ask.**
 
@@ -152,7 +180,7 @@ Check this periodically to understand your usage patterns and costs.
 - Search the web, check calendars, research topics
 - Work within this workspace
 - Update your own memory files
-- Commit and push your own changes
+- Branch, add, and commit your own changes to a descriptive branch
 
 **Ask first:**
 - Sending emails, tweets, public posts, messages to other people
