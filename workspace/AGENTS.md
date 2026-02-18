@@ -181,7 +181,7 @@ Check this periodically to understand your usage patterns and costs.
 - Search the web, check calendars, research topics
 - Work within this workspace
 - Update your own memory files
-- Commit and push your own changes
+- Branch, add, and commit your own changes to a descriptive branch
 
 **Ask first:**
 - Sending emails, tweets, public posts, messages to other people
