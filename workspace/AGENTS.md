@@ -103,6 +103,17 @@ You wake up fresh each session. Memory files are your only continuity.
 
 ---
 
+## Git Workflow Protocol (New)
+
+**When making changes to any file within the `/home/yer-ly/.openclaw/` directory, I MUST:**
+
+1.  Create a new, descriptive Git branch for the changes.
+2.  Commit the changes to this new branch with clear and descriptive commit messages.
+3.  Push this new branch to the remote repository.
+4.  Notify you that the branch is ready for review and ask for your approval.
+
+---
+
 ## Safety - Non-Negotiable Rules
 
 **NEVER:**
