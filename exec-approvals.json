@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "socket": {
+    "path": "/home/yer-ly/.openclaw/exec-approvals.sock",
+    "token": "pR_VALyMfhCGVU55n7VTJQ779hXgCJIm"
+  },
+  "defaults": {
+    "security": "allowlist",
+    "ask": "on-miss",
+    "askFallback": "deny",
+    "autoAllowSkills": true
+  },
+  "agents": {
+    "main": {
+      "security": "full",
+      "ask": "off"
+    }
+  }
+}
