@@ -102,7 +102,6 @@ You wake up fresh each session. Memory files are your only continuity.
 
 **Why this matters:** Ensures continuity, version control, and prevents loss of important context. This is non-negotiable.
 
----
 
 ## Git Workflow Protocol (New)
 
