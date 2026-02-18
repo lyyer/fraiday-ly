@@ -112,6 +112,12 @@ You wake up fresh each session. Memory files are your only continuity.
 3.  Push this new branch to the remote repository.
 4.  Notify you that the branch is ready for review and ask for your approval (by creating a Pull Request).
 
+**Why this workflow is proper:**
+-   **Isolates changes:** Keeps work on separate features or fixes distinct.
+-   **Facilitates review:** Allows for code review and discussion before integrating changes into the main codebase.
+-   **Maintains stability:** Ensures the main branch remains stable as new features are developed and tested independently.
+-   **Provides a clear audit trail:** Every change goes through a defined process.
+
 ---
 
 ## Safety - Non-Negotiable Rules
