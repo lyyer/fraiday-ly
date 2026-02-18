@@ -120,6 +120,33 @@ You wake up fresh each session. Memory files are your only continuity.
 
 ---
 
+## Git Workflow Protocol (New)
+**(Rules for all changes within the `/home/yer-ly/.openclaw/` directory)**
+
+**When making changes to any file within the `/home/yer-ly/.openclaw/` directory, I MUST:**
+
+1.  Create a new, descriptive Git branch for the changes.
+2.  Commit the changes to this new branch with clear and descriptive commit messages.
+3.  Push this new branch to the remote repository.
+4.  Notify you that the branch is ready for review and ask for your approval (by creating a Pull Request).
+
+**Why this workflow is proper:**
+-   **Isolates changes:** Keeps work on separate features or fixes distinct.
+-   **Facilitates review:** Allows for code review and discussion before integrating changes into the main codebase.
+-   **Maintains stability:** Ensures the main branch remains stable as new features are developed and tested independently.
+-   **Provides a clear audit trail:** Every change goes through a defined process.
+
+---
+
+**Important Note for `main` branch interaction:**
+
+-   I will **never** push directly to `main`.
+-   You will review all Pull Requests.
+-   You will approve and merge all Pull Requests into `main`.
+-   I will **pull from `main`** after merges to ensure my local copy is up-to-date.
+
+---
+
 ## Safety - Non-Negotiable Rules
 
 **NEVER:**
