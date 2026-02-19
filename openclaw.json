@@ -168,30 +168,39 @@
         "enabled": true,
         "provider": "gemini",
         "model": "gemini-embedding-001",
+        "remote": {
+          "apiKey": "${GEMINI_API_KEY}"
+        },
         "query": {
           "hybrid": {
             "enabled": true,
             "vectorWeight": 0.7,
-            "bm25Weight": 0.3
+            "textWeight": 0.3,
+            "candidateMultiplier": 4,
+            "mmr": {
+              "enabled": true,
+              "lambda": 0.7
+            },
+            "temporalDecay": {
+              "enabled": true,
+              "halfLifeDays": 30
+            }
           }
         },
-        "store": {
-          "vector": {
-            "enabled": true
-          }
-        },
-        "temporalDecay": {
-          "halfLifeDays": 30
+        "cache": {
+          "enabled": true,
+          "maxEntries": 50000
         }
       },
       "compaction": {
         "mode": "default",
+        "reserveTokensFloor": 20000,
         "memoryFlush": {
           "enabled": true,
           "softThresholdTokens": 35000,
           "model": "openrouter/z-ai/glm-4.7-flash",
-          "prompt": "Distill this session to memory/YYYY-MM-DD.md. Focus on: decisions made, tasks completed/pending, lessons learned. If nothing worth storing: NO_FLUSH",
-          "systemPrompt": "Extract only what matters for continuity. No fluff."
+          "prompt": "Distill this session to memory files. 1) Append session context (tasks, notes, events) to memory/YYYY-MM-DD.md. 2) If any DURABLE facts emerged (user preferences, architecture decisions, new rules, lessons learned), also append them to MEMORY.md under the appropriate section. Do not duplicate what's already in MEMORY.md. If nothing worth storing: NO_FLUSH",
+          "systemPrompt": "You manage two memory layers. MEMORY.md = permanent facts that matter across all sessions. memory/YYYY-MM-DD.md = daily context. Promote only what will still matter in 30 days."
         }
       },
       "heartbeat": {
@@ -269,7 +278,7 @@
           ]
         },
         "tools": {
-          "deny": ["sessions_spawn", "message", "email", "browser", "web_search", "web_fetch", "nodes.invoke", "cron", "canvas", "gateway", "push.test"]
+          "allow": ["read", "write", "edit", "apply_patch", "memory_search"]
         }
       },
       {
@@ -284,7 +293,7 @@
           ]
         },
         "tools": {
-          "deny": ["sessions_spawn", "exec", "write", "edit", "apply_patch", "browser", "web_search", "nodes.invoke", "cron", "canvas", "gateway", "push.test"]
+          "allow": ["read", "message", "email", "web_fetch", "memory_search"]
         }
       }
     ]
@@ -299,6 +308,9 @@
     }
   },
   "tools": {},
+  "logging": {
+    "redactSensitive": "tools"
+  },
   "messages": {
     "ackReactionScope": "group-mentions"
   },
@@ -321,7 +333,11 @@
     "bind": "loopback",
     "auth": {
       "mode": "token",
-      "token": "${GATEWAY_AUTH_TOKEN}"
+      "token": "${GATEWAY_AUTH_TOKEN}",
+      "promptPin": "${PROMPT_PIN}",
+      "requirePinForExternal": true,
+      "externalChannels": ["telegram", "whatsapp", "gmail"],
+      "rateLimitMaxAttempts": 5
     },
     "tailscale": {
       "mode": "off",
@@ -369,5 +385,9 @@
         "enabled": true
       }
     }
+  },
+  "cron": {
+    "enabled": true,
+    "maxConcurrentRuns": 1
   }
 }
