@@ -139,6 +139,7 @@
   },
   "agents": {
     "defaults": {
+      "default": true,
       "model": {
         "primary": "google-antigravity/gemini-3-flash",
         "fallbacks": [
@@ -156,8 +157,7 @@
         "anthropic/claude-haiku-4-5-20251001": {
           "alias": "Haiku",
           "params": {
-            "cacheRetention": "short",
-            "thinking": { "type": "disabled" }
+            "cacheRetention": "short"
           }
         },
         "groq/openai/gpt-oss-20b": { "alias": "GPT OSS 20B" },
@@ -169,9 +169,7 @@
         "google-gemini-cli/gemini-3-flash-preview": {},
         "google-antigravity/gemini-3-pro-high": {},
         "google-gemini-cli/gemini-2.5-flash": {},
-        "google-antigravity/claude-opus-4-6": {
-          "params": { "thinking": { "type": "disabled" } }
-        },
+        "google-antigravity/claude-opus-4-6": {},
         "google-antigravity/claude-sonnet-4-5": {},
         "openrouter/qwen/qwen3-coder-next": { "alias": "Qwen Coder" },
         "openrouter/deepseek/deepseek-v3.2": { "alias": "DeepSeek V3" },
@@ -247,20 +245,6 @@
     },
     "list": [
       {
-        "id": "monitor",
-        "workspace": "/home/yer-ly/.openclaw/workspace",
-        "model": {
-          "primary": "groq/llama-3.1-8b-instant",
-          "fallbacks": [
-            "google-antigravity/gemini-3-flash",
-            "openrouter/z-ai/glm-4.7-flash"
-          ]
-        },
-        "tools": {
-          "allow": ["read", "memory_search"]
-        }
-      },
-      {
         "id": "sysadmin",
         "workspace": "/home/yer-ly/.openclaw/workspace",
         "model": {
@@ -316,6 +300,20 @@
         },
         "tools": {
           "allow": ["read", "message", "email", "web_fetch", "memory_search"]
+        }
+      },
+      {
+        "id": "monitor",
+        "workspace": "/home/yer-ly/.openclaw/workspace",
+        "model": {
+          "primary": "groq/llama-3.1-8b-instant",
+          "fallbacks": [
+            "google-antigravity/gemini-3-flash",
+            "openrouter/z-ai/glm-4.7-flash"
+          ]
+        },
+        "tools": {
+          "allow": ["read", "memory_search"]
         }
       }
     ]
