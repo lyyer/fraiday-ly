@@ -2,11 +2,14 @@
 
 # Core configuration and secrets
 .openclaw/
+.env
+/skills/self-improving-agent
 
 # Temporary files
 *.tmp
 *.bak
 *.log
+*._DS
 
 # Personal/Sensitive Data (Optional - Keep commented if you WANT to back these up to a PRIVATE repo)
 # USER.md
