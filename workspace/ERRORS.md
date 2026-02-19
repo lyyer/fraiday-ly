@@ -1,6 +1,6 @@
 # Error Log
 
-Structured log of failures, corrections, and near-misses. Reviewed by coordinator
+Structured log of failures, corrections, and near-misses. Reviewed by main agent
 before major tasks and by weekly consolidation cron. Recurring patterns get
 promoted to MEMORY.md as lessons learned.
 

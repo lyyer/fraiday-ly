@@ -64,7 +64,7 @@ If the agent loses the ability to communicate after a change, BOOTSTRAP.md kicks
 If the agent detects it's in a broken state (tools failing, config invalid, model errors
 on all fallbacks), it should create `workspace/BOOTSTRAP.md` with recovery steps.
 
-On every session start, the coordinator checks: if BOOTSTRAP.md exists, follow it, then delete it.
+On every session start, the main agent checks: if BOOTSTRAP.md exists, follow it, then delete it.
 
 BOOTSTRAP.md format:
 ```
@@ -77,7 +77,7 @@ BOOTSTRAP.md format:
 ## Created: [timestamp]
 ```
 
-The coordinator can also create BOOTSTRAP.md before attempting a risky change, so if
+The main agent can also create BOOTSTRAP.md before attempting a risky change, so if
 the change breaks things, the next session knows how to recover.
 
 ---

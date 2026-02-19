@@ -18,7 +18,7 @@ This skill decides: **which agent**, **batch or split**, and **quota safety**.
 
 | Tier | Signs | Route to |
 |------|-------|----------|
-| **light** | Single-step, counts, status checks, fetches | Coordinator handles directly or Gemini CLI |
+| **light** | Single-step, counts, status checks, fetches | Main agent handles directly or Gemini CLI |
 | **medium** | Multi-step research, summarization, documentation | researcher or sysadmin |
 | **heavy** | Architecture, complex debugging, multi-file refactors | coder or sysadmin |
 | **heavy-code** | Code reviews, test generation, security audits | coder |
@@ -34,7 +34,7 @@ This skill decides: **which agent**, **batch or split**, and **quota safety**.
 
 1. Read `~/.openclaw/skills/smart-routing/routing-state.json`
 2. If a provider shows **>90% usage**, note it — the agent's fallback chain will handle it automatically.
-3. If ALL providers for an agent's chain are >90%, alert the coordinator to defer or use Gemini CLI.
+3. If ALL providers for an agent's chain are >90%, alert the main agent to defer or use Gemini CLI.
 
 ## Step 4: Spawn
 

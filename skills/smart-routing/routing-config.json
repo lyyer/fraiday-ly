@@ -1,7 +1,7 @@
 {
   "tiers": {
     "light": {
-      "agents": ["coordinator"],
+      "agents": ["main"],
       "description": "Single-step ops: counts, status checks, fetches. Handle directly or use Gemini CLI."
     },
     "medium": {

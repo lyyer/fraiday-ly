@@ -6,7 +6,7 @@ Runs every 30m on cheapest model. Keep it fast.
 2. Run `openclaw status --usage --json > ~/.openclaw/skills/smart-routing/routing-state.json`
 3. Scan today's `memory/YYYY-MM-DD.md` for unresolved items
 4. If nothing needs attention: **HEARTBEAT_OK**
-5. If something needs action: report to coordinator with specifics
+5. If something needs action: report to main agent with specifics
 
 ## Quiet Hours (23:00–08:00 CST)
 

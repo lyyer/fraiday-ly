@@ -8,7 +8,7 @@
 
 ## Architecture
 
-**Coordinator** (main) → pure triage, no work tools
+**Main agent** → pure triage, no work tools
 - **researcher** → web lookups, multi-source research (read-only)
 - **coder** → code gen, debugging, refactoring (no web, no messaging)
 - **sysadmin** → file management, configs, maintenance (no web, no messaging)
@@ -31,7 +31,7 @@ Smart-routing skill classifies complexity → picks agent. agents.list handles m
 - [x] Context pruning (cache-ttl, 4h window)
 - [x] Named agent architecture with tool lockdowns
 - [x] OpenRouter provider for specialist models (Qwen, DeepSeek, Kimi, GLM)
-- [x] Coordinator tool lockdown (triage-only)
+- [x] Main agent tool lockdown (triage-only)
 - [x] AGENTS.md with "When spawned as..." sections
 - [x] Smart-routing refocused: agent routing, not model selection
 - [x] All secrets moved to env vars (${VAR} syntax)
@@ -67,7 +67,7 @@ Smart-routing skill classifies complexity → picks agent. agents.list handles m
 
 ## Future Roadmap
 
-- [ ] **Multi-user gateway** — each user gets their own agent with isolated workspace, auth, and API keys via `bindings` routing. Current architecture (coordinator + sub-agents) becomes a per-user template. See docs.openclaw.ai/concepts/multi-agent.
+- [ ] **Multi-user gateway** — each user gets their own agent with isolated workspace, auth, and API keys via `bindings` routing. Current architecture (main + sub-agents) becomes a per-user template. See docs.openclaw.ai/concepts/multi-agent.
 
 ---
 
