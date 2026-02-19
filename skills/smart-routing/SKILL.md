@@ -1,78 +1,64 @@
 ---
 name: smart-routing
-description: Intelligently route sub-agent tasks to optimal models based on complexity and quota availability. Always consult this skill before spawning sub-agents.
+description: Classify task complexity, decide which named agent to spawn, and manage quota-aware throttling. Consult before every spawn.
 homepage: https://docs.openclaw.ai/
 metadata: {"openclaw":{"emoji":"🧠","requires":{}}}
 ---
 
-# Smart Model Routing Skill
+# Smart Routing Skill
 
-**IMPORTANT: Use this skill EVERY time you spawn a sub-agent to select the optimal model.**
+**Consult this skill before spawning any sub-agent.**
 
-This skill implements a tier-based routing pattern with self-healing, surgical context, and quota awareness.
-
----
-
-## Configuration & State
-
-- **Config:** `~/.openclaw/skills/smart-routing/routing-config.json` (Static priorities)
-- **State:** `~/.openclaw/skills/smart-routing/routing-state.json` (Live quota data from Heartbeat)
+Model selection per agent is handled by `openclaw.json` agents.list.
+This skill decides: **which agent**, **batch or split**, and **quota safety**.
 
 ---
 
-## Tiers
+## Step 1: Classify Complexity
 
-| Tier | Use For |
-|------|---------|
-| **light** | Single-step ops: counts, lists, fetches, status checks |
-| **light-fast** | Same as light but speed-critical, latency-sensitive |
-| **medium** | Multi-step: research, summarization, documentation, explanations |
-| **medium-fast** | Same as medium but time-sensitive |
-| **heavy** | Deep reasoning: architecture, complex debugging, strategic decisions |
-| **heavy-code** | Complex code: reviews, test gen, refactoring, security audits |
-| **critical** | Highest stakes: novel problems, production crises, high-liability |
+| Tier | Signs | Route to |
+|------|-------|----------|
+| **light** | Single-step, counts, status checks, fetches | Coordinator handles directly or Gemini CLI |
+| **medium** | Multi-step research, summarization, documentation | researcher or sysadmin |
+| **heavy** | Architecture, complex debugging, multi-file refactors | coder or sysadmin |
+| **heavy-code** | Code reviews, test generation, security audits | coder |
+| **critical** | Novel problems, production crises, high-liability | coder (escalate model via override) |
 
----
+## Step 2: Batch or Decompose?
 
-## Routing Decision Process
+- **Batch (1 agent):** ≤5 light tasks of the same type. Coordination overhead > speed gain.
+- **Decompose (parallel):** Independent medium+ tasks. Spawn separate agents.
+- **Sequential:** Dependent tasks. Chain them in one agent or spawn serially.
 
-### Step 1: Batch or Decompose? (Smart Batching)
-**Decide if multiple tasks should be parallelized or bundled.**
+## Step 3: Quota Check
 
-- **Batch (1 Agent) if:** Tasks are `light` tier, simple (e.g., check 5 file sizes), and the coordination overhead of 5 agents exceeds the speed gain.
-- **Decompose (Parallel Agents) if:** Tasks are `medium` or higher, or if they are independent and speed is critical.
-- **Threshold:** Max 5-10 `light` tasks per agent.
+1. Read `~/.openclaw/skills/smart-routing/routing-state.json`
+2. If a provider shows **>90% usage**, note it — the agent's fallback chain will handle it automatically.
+3. If ALL providers for an agent's chain are >90%, alert the coordinator to defer or use Gemini CLI.
 
-### Step 2: Classify Complexity & Context Needs
-Read the task and match against tier definitions. Assess if the sub-agent needs persona context (Surgical Context).
+## Step 4: Spawn
 
-### Step 3: Quota-Aware Throttling
-**Before resolving the model, check the fuel gauge.**
+```
+sessions_spawn({ agentId: "<agent-id>", task: "..." })
+```
 
-1. Read `routing-state.json`.
-2. **Throttle Rule:** If a model's current usage is **>90%** of its quota, treat it as "unavailable."
-3. **Shift:** Automatically skip to the next model in the `routing-config.json` array.
-4. **Goal:** Preserve the last 10% of premium quotas for manual/critical tasks.
+Include: what to do (2-3 sentences), relevant file paths, success criteria.
+The agent's model chain from `agents.list` is used automatically.
+Only override `model` for `critical` tier escalation.
 
-### Step 4: Resolve & Spawn
-1. Pick the first available (non-throttled) model from the tier.
-2. Prepend harvested context snippets (if needed).
-3. `sessions_spawn(task, label, model)`
+## Step 5: Failure Recovery
 
-### Step 5: Failure Recovery (Self-Healing)
-If a sub-agent fails (rate limit, safety, or error):
-1. **Analyze** the error.
-2. **Escalate** to the next available model in the fallback array.
-3. **Retry** automatically (Max 1 retry per task).
-
-### Step 6: Automated Synthesis (The "General" Step)
-Decide whether to synthesize results in the main chat or spawn a specialized agent.
-- **Main Chat:** Small volume, simple synthesis.
-- **Specialized Agent:** High volume, complex cross-referencing, or reasoning "upgrade" needed.
+If a sub-agent fails (rate limit, safety filter, error):
+1. Analyze the error.
+2. The agent's fallback chain handles model escalation automatically.
+3. If the agent itself failed (not just the model), retry once with clearer instructions.
+4. After 2 failures, report to user — don't retry infinitely.
 
 ---
 
 ## Anti-Patterns
-- **Don't: Skip the quota check.** Spawning an agent on a dead quota is a waste of time.
-- **Don't: Over-parallelize.** Spawning 20 agents for 20 tiny tasks creates "agent bloat."
-- **Don't: Bloat sub-agents with full files.** Only send the specific lines needed.
+
+- **Don't skip the quota check.** Spawning on a dead quota wastes time.
+- **Don't over-parallelize.** 20 agents for 20 tiny tasks = agent bloat.
+- **Don't bloat sub-agent prompts.** Send specific lines, not full files.
+- **Don't override models unless critical tier.** Trust the agents.list chains.
