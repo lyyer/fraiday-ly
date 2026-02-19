@@ -139,14 +139,6 @@
   },
   "agents": {
     "defaults": {
-      "default": true,
-      "model": {
-        "primary": "google-antigravity/gemini-3-flash",
-        "fallbacks": [
-          "groq/llama-3.1-8b-instant",
-          "openrouter/z-ai/glm-4.7-flash"
-        ]
-      },
       "models": {
         "anthropic/claude-sonnet-4-5-20250929": {
           "alias": "Sonnet",
@@ -233,17 +225,29 @@
         "maxConcurrent": 8,
         "maxSpawnDepth": 2,
         "archiveAfterMinutes": 30,
-        "allowAgents": ["monitor", "researcher", "coder", "sysadmin", "communicator"]
+        "allowAgents": ["coordinator", "monitor", "researcher", "coder", "sysadmin", "communicator"]
       },
       "sandbox": {
         "mode": "non-main",
         "workspaceAccess": "rw"
-      },
-      "tools": {
-        "deny": ["exec", "write", "edit", "apply_patch", "browser", "web_search", "web_fetch", "email", "nodes.invoke", "cron", "canvas", "gateway", "push.test"]
       }
     },
     "list": [
+      {
+        "id": "coordinator",
+        "default": true,
+        "workspace": "/home/yer-ly/.openclaw/workspace",
+        "model": {
+          "primary": "google-antigravity/gemini-3-flash",
+          "fallbacks": [
+            "groq/llama-3.1-8b-instant",
+            "openrouter/z-ai/glm-4.7-flash"
+          ]
+        },
+        "tools": {
+          "deny": ["exec", "write", "edit", "apply_patch", "browser", "web_search", "web_fetch", "email", "nodes.invoke", "cron", "canvas", "gateway", "push.test"]
+        }
+      },
       {
         "id": "sysadmin",
         "workspace": "/home/yer-ly/.openclaw/workspace",
