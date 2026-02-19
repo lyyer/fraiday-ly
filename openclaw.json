@@ -1,14 +1,17 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.2.15",
-    "lastTouchedAt": "2026-02-17T19:29:23.961Z"
+    "lastTouchedAt": "2026-02-19T23:31:21.764Z"
   },
   "env": {},
   "wizard": {
-    "lastRunAt": "2026-02-17T16:57:20.937Z",
+    "lastRunAt": "2026-02-19T23:31:21.756Z",
     "lastRunVersion": "2026.2.15",
     "lastRunCommand": "doctor",
     "lastRunMode": "local"
+  },
+  "logging": {
+    "redactSensitive": "tools"
   },
   "auth": {
     "profiles": {
@@ -20,6 +23,14 @@
         "provider": "google-antigravity",
         "mode": "oauth"
       }
+    },
+    "order": {
+      "google-antigravity": [
+        "google-antigravity:fraiday.ly@gmail.com"
+      ],
+      "google-gemini-cli": [
+        "google-gemini-cli:fraiday.ly@gmail.com"
+      ]
     }
   },
   "models": {
@@ -27,14 +38,16 @@
     "providers": {
       "openrouter": {
         "baseUrl": "https://openrouter.ai/api/v1",
-        "api": "openai-completions",
         "apiKey": "${OPENROUTER_API_KEY}",
+        "api": "openai-completions",
         "models": [
           {
             "id": "qwen/qwen3-coder-next",
             "name": "Qwen3 Coder Next",
             "reasoning": false,
-            "input": ["text"],
+            "input": [
+              "text"
+            ],
             "contextWindow": 131072,
             "maxTokens": 8192
           },
@@ -42,7 +55,9 @@
             "id": "deepseek/deepseek-v3.2",
             "name": "DeepSeek V3.2",
             "reasoning": false,
-            "input": ["text"],
+            "input": [
+              "text"
+            ],
             "contextWindow": 131072,
             "maxTokens": 8192
           },
@@ -50,7 +65,9 @@
             "id": "moonshotai/kimi-k2.5",
             "name": "Kimi K2.5",
             "reasoning": false,
-            "input": ["text"],
+            "input": [
+              "text"
+            ],
             "contextWindow": 131072,
             "maxTokens": 8192
           },
@@ -58,7 +75,9 @@
             "id": "z-ai/glm-4.7-flash",
             "name": "GLM 4.7 Flash",
             "reasoning": false,
-            "input": ["text"],
+            "input": [
+              "text"
+            ],
             "contextWindow": 131072,
             "maxTokens": 4096
           },
@@ -66,7 +85,9 @@
             "id": "z-ai/glm-5",
             "name": "GLM 5",
             "reasoning": false,
-            "input": ["text"],
+            "input": [
+              "text"
+            ],
             "contextWindow": 131072,
             "maxTokens": 8192
           },
@@ -74,7 +95,9 @@
             "id": "qwen/qwen3.5-397b-a17b",
             "name": "Qwen3.5 397B",
             "reasoning": false,
-            "input": ["text"],
+            "input": [
+              "text"
+            ],
             "contextWindow": 131072,
             "maxTokens": 8192
           }
@@ -82,8 +105,8 @@
       },
       "groq": {
         "baseUrl": "https://api.groq.com/openai/v1",
-        "api": "openai-completions",
         "apiKey": "${GROQ_API_KEY}",
+        "api": "openai-completions",
         "models": [
           {
             "id": "openai/gpt-oss-20b",
@@ -152,9 +175,15 @@
             "cacheRetention": "short"
           }
         },
-        "groq/openai/gpt-oss-20b": { "alias": "GPT OSS 20B" },
-        "groq/llama-3.1-8b-instant": { "alias": "Llama3 8B" },
-        "groq/llama-3.3-70b-versatile": { "alias": "Llama3 70B" },
+        "groq/openai/gpt-oss-20b": {
+          "alias": "GPT OSS 20B"
+        },
+        "groq/llama-3.1-8b-instant": {
+          "alias": "Llama3 8B"
+        },
+        "groq/llama-3.3-70b-versatile": {
+          "alias": "Llama3 70B"
+        },
         "google-gemini-cli/gemini-3-pro-preview": {},
         "google-antigravity/claude-opus-4-6-thinking": {},
         "google-antigravity/gemini-3-flash": {},
@@ -163,40 +192,39 @@
         "google-gemini-cli/gemini-2.5-flash": {},
         "google-antigravity/claude-opus-4-6": {},
         "google-antigravity/claude-sonnet-4-5": {},
-        "openrouter/qwen/qwen3-coder-next": { "alias": "Qwen Coder" },
-        "openrouter/deepseek/deepseek-v3.2": { "alias": "DeepSeek V3" },
-        "openrouter/moonshotai/kimi-k2.5": { "alias": "Kimi K2.5" },
-        "openrouter/z-ai/glm-4.7-flash": { "alias": "GLM Flash" },
-        "openrouter/z-ai/glm-5": { "alias": "GLM 5" },
-        "openrouter/qwen/qwen3.5-397b-a17b": { "alias": "Qwen 397B" }
+        "openrouter/qwen/qwen3-coder-next": {
+          "alias": "Qwen Coder"
+        },
+        "openrouter/deepseek/deepseek-v3.2": {
+          "alias": "DeepSeek V3"
+        },
+        "openrouter/moonshotai/kimi-k2.5": {
+          "alias": "Kimi K2.5"
+        },
+        "openrouter/z-ai/glm-4.7-flash": {
+          "alias": "GLM Flash"
+        },
+        "openrouter/z-ai/glm-5": {
+          "alias": "GLM 5"
+        },
+        "openrouter/qwen/qwen3.5-397b-a17b": {
+          "alias": "Qwen 397B"
+        }
       },
       "workspace": "/home/yer-ly/.openclaw/workspace",
-      "contextPruning": {
-        "mode": "cache-ttl",
-        "ttl": "4h",
-        "keepLastAssistants": 3
-      },
       "memorySearch": {
         "enabled": true,
         "provider": "gemini",
-        "model": "gemini-embedding-001",
         "remote": {
           "apiKey": "${GEMINI_API_KEY}"
         },
+        "model": "gemini-embedding-001",
         "query": {
           "hybrid": {
             "enabled": true,
             "vectorWeight": 0.7,
             "textWeight": 0.3,
-            "candidateMultiplier": 4,
-            "mmr": {
-              "enabled": true,
-              "lambda": 0.7
-            },
-            "temporalDecay": {
-              "enabled": true,
-              "halfLifeDays": 30
-            }
+            "candidateMultiplier": 4
           }
         },
         "cache": {
@@ -204,13 +232,17 @@
           "maxEntries": 50000
         }
       },
+      "contextPruning": {
+        "mode": "cache-ttl",
+        "ttl": "4h",
+        "keepLastAssistants": 3
+      },
       "compaction": {
         "mode": "default",
         "reserveTokensFloor": 20000,
         "memoryFlush": {
           "enabled": true,
           "softThresholdTokens": 35000,
-          "model": "openrouter/z-ai/glm-4.7-flash",
           "prompt": "Distill this session to memory files. 1) Append session context (tasks, notes, events) to memory/YYYY-MM-DD.md. 2) If any DURABLE facts emerged (user preferences, architecture decisions, new rules, lessons learned), also append them to MEMORY.md under the appropriate section. Do not duplicate what's already in MEMORY.md. If nothing worth storing: NO_FLUSH",
           "systemPrompt": "You manage two memory layers. MEMORY.md = permanent facts that matter across all sessions. memory/YYYY-MM-DD.md = daily context. Promote only what will still matter in 30 days."
         }
@@ -221,11 +253,10 @@
       },
       "maxConcurrent": 4,
       "subagents": {
-        "model": "google-antigravity/gemini-3-flash",
         "maxConcurrent": 8,
         "maxSpawnDepth": 2,
         "archiveAfterMinutes": 30,
-        "allowAgents": ["coordinator", "monitor", "researcher", "coder", "sysadmin", "communicator"]
+        "model": "google-antigravity/gemini-3-flash"
       },
       "sandbox": {
         "mode": "non-main",
@@ -234,7 +265,7 @@
     },
     "list": [
       {
-        "id": "coordinator",
+        "id": "main",
         "default": true,
         "workspace": "/home/yer-ly/.openclaw/workspace",
         "model": {
@@ -244,8 +275,31 @@
             "openrouter/z-ai/glm-4.7-flash"
           ]
         },
+        "subagents": {
+          "allowAgents": [
+            "researcher",
+            "coder",
+            "sysadmin",
+            "communicator",
+            "monitor"
+          ]
+        },
         "tools": {
-          "deny": ["exec", "write", "edit", "apply_patch", "browser", "web_search", "web_fetch", "email", "nodes.invoke", "cron", "canvas", "gateway", "push.test"]
+          "deny": [
+            "exec",
+            "write",
+            "edit",
+            "apply_patch",
+            "browser",
+            "web_search",
+            "web_fetch",
+            "email",
+            "nodes.invoke",
+            "cron",
+            "canvas",
+            "gateway",
+            "push.test"
+          ]
         }
       },
       {
@@ -258,9 +312,18 @@
             "openrouter/qwen/qwen3.5-397b-a17b"
           ]
         },
-        "sandbox": { "mode": "off" },
+        "sandbox": {
+          "mode": "off"
+        },
         "tools": {
-          "allow": ["exec", "read", "write", "edit", "apply_patch", "memory_search"]
+          "allow": [
+            "exec",
+            "read",
+            "write",
+            "edit",
+            "apply_patch",
+            "memory_search"
+          ]
         }
       },
       {
@@ -274,7 +337,13 @@
           ]
         },
         "tools": {
-          "allow": ["read", "web_search", "web_fetch", "browser", "memory_search"]
+          "allow": [
+            "read",
+            "web_search",
+            "web_fetch",
+            "browser",
+            "memory_search"
+          ]
         }
       },
       {
@@ -289,7 +358,13 @@
           ]
         },
         "tools": {
-          "allow": ["read", "write", "edit", "apply_patch", "memory_search"]
+          "allow": [
+            "read",
+            "write",
+            "edit",
+            "apply_patch",
+            "memory_search"
+          ]
         }
       },
       {
@@ -304,7 +379,13 @@
           ]
         },
         "tools": {
-          "allow": ["read", "message", "email", "web_fetch", "memory_search"]
+          "allow": [
+            "read",
+            "message",
+            "email",
+            "web_fetch",
+            "memory_search"
+          ]
         }
       },
       {
@@ -318,30 +399,37 @@
           ]
         },
         "tools": {
-          "allow": ["read", "memory_search"]
+          "allow": [
+            "read",
+            "memory_search"
+          ]
         }
       }
     ]
   },
-  "session": {
-    "scope": "per-sender",
-    "resetTriggers": ["/new", "/reset"],
-    "reset": {
-      "mode": "daily",
-      "atHour": 4,
-      "idleMinutes": 1440
-    }
-  },
   "tools": {},
-  "logging": {
-    "redactSensitive": "tools"
-  },
   "messages": {
     "ackReactionScope": "group-mentions"
   },
   "commands": {
     "native": "auto",
     "nativeSkills": "auto"
+  },
+  "session": {
+    "scope": "per-sender",
+    "resetTriggers": [
+      "/new",
+      "/reset"
+    ],
+    "reset": {
+      "mode": "daily",
+      "atHour": 4,
+      "idleMinutes": 1440
+    }
+  },
+  "cron": {
+    "enabled": true,
+    "maxConcurrentRuns": 1
   },
   "channels": {
     "telegram": {
@@ -358,11 +446,7 @@
     "bind": "loopback",
     "auth": {
       "mode": "token",
-      "token": "${GATEWAY_AUTH_TOKEN}",
-      "promptPin": "${PROMPT_PIN}",
-      "requirePinForExternal": true,
-      "externalChannels": ["telegram", "whatsapp", "gmail"],
-      "rateLimitMaxAttempts": 5
+      "token": "${GATEWAY_AUTH_TOKEN}"
     },
     "tailscale": {
       "mode": "off",
@@ -389,13 +473,27 @@
       "summarize"
     ],
     "entries": {
-      "1password": { "enabled": true },
-      "gemini": { "enabled": true },
-      "self-improving-agent": { "enabled": true },
-      "smart-routing": { "enabled": true },
-      "github": { "enabled": false },
-      "coding-agent": { "enabled": false },
-      "model-usage": { "enabled": false }
+      "1password": {
+        "enabled": true
+      },
+      "gemini": {
+        "enabled": true
+      },
+      "self-improving-agent": {
+        "enabled": true
+      },
+      "smart-routing": {
+        "enabled": true
+      },
+      "github": {
+        "enabled": false
+      },
+      "coding-agent": {
+        "enabled": false
+      },
+      "model-usage": {
+        "enabled": false
+      }
     }
   },
   "plugins": {
@@ -410,9 +508,5 @@
         "enabled": true
       }
     }
-  },
-  "cron": {
-    "enabled": true,
-    "maxConcurrentRuns": 1
   }
 }
