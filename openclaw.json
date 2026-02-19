@@ -160,34 +160,15 @@
             "thinking": { "type": "disabled" }
           }
         },
-        "groq/openai/gpt-oss-20b": {
-          "alias": "GPT OSS 20B",
-          "params": { "thinking": { "type": "disabled" } }
-        },
-        "groq/llama-3.1-8b-instant": {
-          "alias": "Llama3 8B",
-          "params": { "thinking": { "type": "disabled" } }
-        },
-        "groq/llama-3.3-70b-versatile": {
-          "alias": "Llama3 70B",
-          "params": { "thinking": { "type": "disabled" } }
-        },
-        "google-gemini-cli/gemini-3-pro-preview": {
-          "params": { "thinking": { "type": "disabled" } }
-        },
+        "groq/openai/gpt-oss-20b": { "alias": "GPT OSS 20B" },
+        "groq/llama-3.1-8b-instant": { "alias": "Llama3 8B" },
+        "groq/llama-3.3-70b-versatile": { "alias": "Llama3 70B" },
+        "google-gemini-cli/gemini-3-pro-preview": {},
         "google-antigravity/claude-opus-4-6-thinking": {},
-        "google-antigravity/gemini-3-flash": {
-          "params": { "thinking": { "type": "disabled" } }
-        },
-        "google-gemini-cli/gemini-3-flash-preview": {
-          "params": { "thinking": { "type": "disabled" } }
-        },
-        "google-antigravity/gemini-3-pro-high": {
-          "params": { "thinking": { "type": "disabled" } }
-        },
-        "google-gemini-cli/gemini-2.5-flash": {
-          "params": { "thinking": { "type": "disabled" } }
-        },
+        "google-antigravity/gemini-3-flash": {},
+        "google-gemini-cli/gemini-3-flash-preview": {},
+        "google-antigravity/gemini-3-pro-high": {},
+        "google-gemini-cli/gemini-2.5-flash": {},
         "google-antigravity/claude-opus-4-6": {
           "params": { "thinking": { "type": "disabled" } }
         },
@@ -195,18 +176,9 @@
         "openrouter/qwen/qwen3-coder-next": { "alias": "Qwen Coder" },
         "openrouter/deepseek/deepseek-v3.2": { "alias": "DeepSeek V3" },
         "openrouter/moonshotai/kimi-k2.5": { "alias": "Kimi K2.5" },
-        "openrouter/z-ai/glm-4.7-flash": {
-          "alias": "GLM Flash",
-          "params": { "thinking": { "type": "disabled" } }
-        },
-        "openrouter/z-ai/glm-5": {
-          "alias": "GLM 5",
-          "params": { "thinking": { "type": "disabled" } }
-        },
-        "openrouter/qwen/qwen3.5-397b-a17b": {
-          "alias": "Qwen 397B",
-          "params": { "thinking": { "type": "disabled" } }
-        }
+        "openrouter/z-ai/glm-4.7-flash": { "alias": "GLM Flash" },
+        "openrouter/z-ai/glm-5": { "alias": "GLM 5" },
+        "openrouter/qwen/qwen3.5-397b-a17b": { "alias": "Qwen 397B" }
       },
       "workspace": "/home/yer-ly/.openclaw/workspace",
       "contextPruning": {
